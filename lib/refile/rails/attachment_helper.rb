@@ -76,7 +76,7 @@ module Refile
       options[:data] ||= {}
 
       definition = object.send(:"#{method}_attachment_definition")
-      options[:accept] = definition.accept
+      options[:accept] = definition.accept if options[:accept].blank? || options[:accept].nil?
 
       if options[:direct]
         url = Refile.attachment_upload_url(object, method, host: options[:host], prefix: options[:prefix])
